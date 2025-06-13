@@ -15,7 +15,7 @@ M.config = {
   width = 80,
   height = 20,
   border = "rounded",
-  list_height = 15,
+  list_height = 20,
   show_line_preview = true,
 }
 
@@ -192,7 +192,7 @@ local function open_definition_list(locs)
   api.nvim_buf_set_option(buf, "modifiable", false)
 
   -- Calculate window size and position
-  local width = math.min(120, vim.o.columns - 4)
+  local width = math.min(50, vim.o.columns - 4)
   local height = math.min(M.config.list_height, #display_lines + 2)
   local row = math.floor((vim.o.lines - height) / 2)
   local col = math.floor((vim.o.columns - width) / 2)
@@ -309,7 +309,7 @@ function M.peek()
       return
     end
 
-    local locs = vim.tbl_islist(result) and result or { result }
+    local locs = vim.islist(result) and result or { result }
     pick_and_preview(locs)
   end)
 end

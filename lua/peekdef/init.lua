@@ -212,11 +212,9 @@ local function open_definition_list(locs)
 
   list_win = win
 
-  -- Set window options
   api.nvim_win_set_option(win, "cursorline", true)
   api.nvim_win_set_option(win, "wrap", false)
 
-  -- Set up syntax highlighting
   vim.cmd([[
     syntax match PeekDefinitionIndex "^\d\+\." nextgroup=PeekDefinitionFile
     syntax match PeekDefinitionFile " \S\+:\d\+:\d\+" contained nextgroup=PeekDefinitionDir
